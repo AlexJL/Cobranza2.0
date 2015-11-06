@@ -1,0 +1,124 @@
+
+@font-face{
+    font-family:"Trade";
+    src:url("../res/font/TradeGothicLTStd-BdCn20.otf");
+}
+
+/************************************* PÁGINA DE INICIO ****************************/
+#title-header img
+{
+    vertical-align: bottom;
+}
+
+.foot
+{
+    font-family: "Trade";
+    font-size: 18px !important;
+    text-shadow: none;
+}
+
+.text-head
+{
+    text-shadow: none;
+    font-family: 'Trade';
+    text-transform: uppercase;
+}
+
+/************************************* Pagina de Facturación ***********************/
+#facturacion
+{
+    background: #FFF;
+}
+
+#myselect,#myselect2,#myselect1
+{
+    margin-bottom: 20px;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #296fb7;
+    font-family: 'Trade';
+    font-size: 20px;
+    background: #296FB7;
+    opacity: 0.7;
+    color: #FFF;
+    text-shadow: none:
+}
+
+.txt-slect
+{
+    margin-right: 10px;
+    font-style: normal;
+    font-family: 'Trade';
+    font-size: 18px;
+}
+
+#ver-grafico
+{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background: #5D83AA !important;
+    padding: 10px;
+    border: none;
+    color: #FFF !important;
+    font-family: "Trade" !important;
+    text-transform: uppercase !important;
+    font-size: 17px !important;
+    text-shadow: none !important;
+}
+
+#ver-grafico img
+{
+    vertical-align: text-bottom;
+    margin-right:  8px;
+}
+
+/* ------ tabla ------- */
+
+#table1
+{
+    margin-top: 20px;
+}
+
+
+.google-visualization-table-tr-head
+{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,207cca+100,7db9e8+100 */
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top,  #1e5799 0%, #207cca 100%, #7db9e8 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(100%,#207cca), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #1e5799 0%,#207cca 100%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #1e5799 0%,#207cca 100%,#7db9e8 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #1e5799 0%,#207cca 100%,#7db9e8 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #1e5799 0%,#207cca 100%,#7db9e8 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+
+    font-family: 'Trade';
+    text-shadow: none;
+    font-size: 16px;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.google-visualization-table-tr-even
+{
+    background: #167F92 !important;
+    color: #FFF;
+    font-family: 'Trade';
+    font-size: 16px;
+    text-shadow: none;
+    text-align: center;
+}
+
+.google-visualization-table-tr-odd
+{
+    background: #FFF !important;
+    text-shadow: none;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Trade';
+}
+
+.google-visualization-table-td google-visualization-table-td-number
+{
+    font-size: 20px;
+}
