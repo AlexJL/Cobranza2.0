@@ -132,7 +132,17 @@ function graficarMontos()
                     }
                 
         dibujar3(datos3,ancho,grafica);
-        dibujar4(datos3,ancho);
+            var datos13 = new google.visualization.DataTable();
+                datos13.addColumn('string','Mes');
+                datos13.addColumn('number','Facturacion');
+                datos13.addColumn('number','Cobranza')
+                for(var j=1;j<tam1+1;j++)
+                    {
+                        datos13.addRows([
+                            [datos4[0][j],datos4[1][j],datos4[2][j]]
+                            ]);
+                    }
+        dibujar4(datos13,ancho);
             }
     else
         {
