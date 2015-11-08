@@ -326,7 +326,6 @@ function colocar(valor, cad, cad1)
     
     cad1 = "20"+cad1;
     cadena = cadena + cad1;
-    alert(cadena);
     var variable2 = new Option(cadena,"value","defaultSelected","selected");
     document.getElementById("myselect").options[valor] = variable2;
 }
@@ -421,9 +420,32 @@ function colocar1(valor, cad, cad1)
     
     cad1 = "20"+cad1;
     cadena = cadena + cad1;
-    alert(cadena);
     var variable2 = new Option(cadena,"value","defaultSelected","selected");
     document.getElementById("myselect4").options[valor] = variable2;
 }
 
-
+function ingresoUsuarioValido()
+{
+    var name=document.getElementById('txt-email').value;
+    var pass = document.getElementById('txt-pass').value;
+    if(name != "ADMIN")
+        {
+            alert("usuario incorrecto");
+        }
+    else
+        {
+            if(pass != "ADMIN")
+                {
+                    alert("contraseña no valida")
+                }
+            else
+            {
+                $.mobile.changePage( "index.html#inicio", {
+                transition: "pop",
+                reverse: false,
+                changeHash: true
+                });
+            }
+        }
+    
+}

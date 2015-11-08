@@ -7,58 +7,36 @@ function verFacturacion()
     var mes;
     var mesinicio;
     var mesfinal;
+    var f = new Date();
     if(x == 0)
         {
-            var mesinicio = "01/11/15";
-            var mesfinal = "30/11/15";
-            /*mes = localStorage.getItem('mes11');
-            var dia = verificarDia(1);
-            mes = mes.replace('-','/');
-             mesinicio = "01/"+mes;
-            mesfinal = dia+"/"+mes;
-            document.getElementById('mesG').innerHTML = localStorage.getItem('mesactual');*/
+            var dia = f.getDate();
+            mesfinal = dia+"/"+datos4[0][1];
+            mesinicio = "01"+"/"+datos4[0][1];
         }
     else if(x == 1)
         {
-            var mesinicio = "01/10/15";
-            var mesfinal = "31/10/15";
-            /*mes = localStorage.getItem('mes12');
-            var dia = verificarDia(2);
-            mes = mes.replace('-','/');
-             mesinicio = "01/"+mes;
-            mesfinal = dia+"/"+mes;
-            document.getElementById('mesG').innerHTML = localStorage.getItem('mespasado');*/
+            var dia1 = verificarDia(2);
+            mesfinal = dia1+"/"+datos4[0][2];
+            mesinicio = "01"+"/"+datos4[0][2];
         }
     else if(x == 2)
         {
-            var mesinicio = "01/09/15";
-            var mesfinal = "30/09/15";
-            /*mes = localStorage.getItem('mes13');
-            var dia = verificarDia(3);
-            mes = mes.replace('-','/');
-             mesinicio = "01/"+mes;
-            mesfinal = dia+"/"+mes;
-            document.getElementById('mesG').innerHTML = localStorage.getItem('mesantepasado');*/
+            var dia1 = verificarDia(3);
+            mesinicio = "01/"+datos4[0][3];
+            mesfinal = dia1+"/"+datos4[0][3];
         }
     else if(x == 3)
         {
-            var mesinicio = "01/08/15";
-            var mesfinal = "31/08/15";/*
-            mes = localStorage.getItem('mes14');
-            mes = mes.replace('-','/');
-            var dia = verificarDia(1);
-            mesinicio = "01/"+mes;
-            mesfinal = dia+"/"+mes;
-            document.getElementById('mesG').innerHTML = localStorage.getItem('mesaniopasado');*/
+            var dia1 = verificarDia(4);
+            mesinicio = "01/"+datos4[0][4];
+            mesfinal = dia1+"/"+datos4[0][3];
         }
     else{
-        var mesinicio = "01/11/15";
-        var mesfinal = "30/11/15";
-        /*mes = localStorage.getItem('mes11');
-        document.getElementById('mesG').innerHTML = localStorage.getItem('mesactual');*/
+        var dia = f.getDate();
+        mesfinal = "01"+"/"+datos4[0][1];
+        mesinicio = dia+"/"+datos4[0][1];
     }
-    
-    
     
     
     $("#LoadingImage1").show();
@@ -211,38 +189,63 @@ function onSuccess(data)
     }
 }
 
-/*function genera_tabla(datos,tam) {
-  // Obtener la referencia del elemento body
-  var body = document.getElementById("table1");
- 
-  // Crea un elemento <table> y un elemento <tbody>
-  var tabla   = document.createElement("table");
-    tabla.setAttribute("class","demo");
-  var tblBody = document.createElement("tbody");
-  // Crea las celdas
-  for (var i = 0; i < tam+1; i++) {
-    // Crea las hileras de la tabla
-    var hilera = document.createElement("tr");
- 
-    for (var j = 0; j < 3; j++) {
-      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-      // texto sea el contenido de <td>, ubica el elemento <td> al final
-      // de la hilera de la tabla
-      var celda = document.createElement("td");
-      var textoCelda = document.createTextNode(datos[j][i]);
-      celda.appendChild(textoCelda);
-      hilera.appendChild(celda);
-    }
- 
-    // agrega la hilera al final de la tabla (al final del elemento tblbody)
-    tblBody.appendChild(hilera);
-  }
- 
-  // posiciona el <tbody> debajo del elemento <table>
-  tabla.appendChild(tblBody);
-  // appends <table> into <body>
-  body.appendChild(tabla);
-  // modifica el atributo "border" de la tabla y lo fija a "2";
-  tabla.setAttribute("border", "0");
-}*/
+function verificarDia(dat)
+    {
+        var dd;
+        var f =  new Date();
+        if(dat == 1)
+            {
+                var mm = f.getMonth() + 1;
+            }
+        else if(dat == 2)
+            {
+                var mm = f.getMonth() + 1;
+                if(mm < 2)
+                    {
+                        mm = 12;
+                    }
+                else{
+                    mm = mm - 1;
+                }
+            }
+        else if(dat==3)
+            {
+                var mm = f.getMonth() + 1;
+                if(mm < 3)
+                    {
+                        mm = 12;
+                    }
+                else if(mm < 2){
+                    mm = 11;
+                }
+                else
+                    {
+                        mm = mm -2;
+                    }
+            }
+        else{
+            var mm = f.getMonth() +1;    
+        }
+        
+        if(mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm==12)
+            {
+                dd = 31;
+            }
+        else if(mm==2)
+            {
+                var aa = f.getFullYear();
+                if((aa%4 == 0) && ((aa%100 != 0) || (aa%400 == 0)))
+                   {
+                        dd = 29;
+                   }
+                   else{
+                        dd = 28;
+                   }           
+            }
+        else
+        {
+            dd=30;
+        }
+    return dd;
+}
 

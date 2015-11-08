@@ -8,24 +8,40 @@
         <link rel="stylesheet" type="text/css" href="css/index.css"/>
         
         <script type="text/javascript" src="js/facturacion.js" async="async"></script>
+        <script type="text/javascript" src="js/cobranza.js" async="async"></script>
         <script type="text/javascript" src="js/index.js" async="async"></script>
         <script type="text/javascript" src="js/jquery-1.9.1.min.js" async="async"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js" async="async"></script>
         <script type="text/javascript"  src="https://www.google.com/jsapi"></script>
         <script async="async">
             $(document).bind('mobileinit',function(){
-    $.mobile.changePage.defaults.changeHash = false;
-    $.mobile.hashListeningEnabled = false;
-    $.mobile.pushStateEnabled = false;
-});
+                $.mobile.changePage.defaults.changeHash = false;
+                $.mobile.hashListeningEnabled = false;
+                $.mobile.pushStateEnabled = false;
+            });
             google.load('visualization','1.0',{'packages':['corechart']});
             google.load("visualization", "1.1", {packages:["table"]});
-            var datos4 ;
+            var datos4 ; var datos5; var datos8;
             var verificar = 0;
         </script>
         
     </head>
     <body>
+        
+        <div data-role="page" id="login">
+        <div class="wrapper">
+            <div class="container">
+            <h1><img src="img/logo.png" alt="Log Sedalib" width="250" height="70"></h1>
+            <div id="form" >
+                 <input id="txt-email" data-role="none" name="username" type="text" tabindex="1" placeholder="Usuario" required>
+                 <input id="txt-pass" data-role="none" name="userpass" type="password" tabindex="2" placeholder="Contraseña" required>
+                 <button data-role="none"  id="login-button" value="Login" onclick="ingresoUsuarioValido()" ><a id="login-entrar">Login</a></button>
+            </div>
+            
+            </div>
+        </div>
+        </div>
+        
         <div data-role="page" id="inicio">
             <div data-role="header" data-position="fixed">
                 <h3 class="text-head"><img  src="img/icon%20-%20copia.png">SIGC<br></h3>
@@ -90,7 +106,7 @@
         
         <div data-role="page" id="facturacion">
             <div data-role="header" data-position="fixed">
-                <h3 class="text-head"> Facturación</h3>
+                <h3 class="text-head" id="text-head1"> Facturación</h3>
                 <a href="#inicio" data-role="none"><img src="img/back.png"></a>
             </div>
             <div data-role="content">
@@ -155,7 +171,7 @@
             </div>
         <div data-role="page" id="cobranza">
             <div data-role="header" data-position="fixed">
-                <h3 class="text-head"> Facturación</h3>
+                <h3 class="text-head"> Cobranza</h3>
                 <a href="#inicio" data-role="none"><img src="img/back.png"></a>
             </div>
             <div data-role="content">
@@ -167,6 +183,26 @@
                         <option value=""></option>
                     </select>
                  </center>
+                <center>
+                <i class="txt-slect">Seleccione un Gráfico</i><select id="myselect5" data-role="none">
+                        <option value="">Gráfico Barra</option>
+                        <option value="">Gráfico Columnas</option>
+                        <option value="">Gráfico Áreas</option>
+                        <option value="">Gráfico Lineas</option>
+                    </select>
+                 </center>
+                <center>
+                    <button id="btn-doc" data-role="none" onclick="verDocumento()">
+                        <img src="img/document199.png">Documentos</button>
+                    <button id="btn-emp" data-role="none" onclick="verEmpresa()">
+                    <img src="img/payment7.png"> Empresas</button>
+                </center>
+                <hr>
+                <center><div id="LoadingImage3" style="display: none">
+                <img src="img/ajax-loader.gif" />
+            </div></center>
+                <div id="charts2"></div>
+                <div id="table3"></div>
             </div>
             <div data-role="footer" data-position="fixed">
                 <h3 class="foot">SEDALIB S.A. &copy; 2015</h3>

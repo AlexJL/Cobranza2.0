@@ -4,6 +4,185 @@
     src:url("../res/font/TradeGothicLTStd-BdCn20.otf");
 }
 
+/********************************** Login ****************************/
+#login{
+  background: #296fb7;
+  color: white;
+  font-weight: 300;
+}
+
+#login ::-webkit-input-placeholder {
+  /* WebKit browsers */
+
+  color: white;
+  font-weight: 300;
+}
+
+#login :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+}
+
+#login ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+}
+
+#login :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: white;
+  font-weight: 300;
+}
+
+#login-button, #txt-email, #txt-pass
+{
+    font-family: 'Trade';
+
+}
+.wrapper {
+
+  background: -webkit-linear-gradient(top left, #296fb7 0%, #296fb7 100%);
+  background: linear-gradient(to bottom right, #296fb7 0%, #296fb7 100%);
+  position: absolute;
+  /*top: 50%;*/
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*margin-top: -250px;*/
+  overflow: hidden;
+}
+.wrapper.form-success .container h1 {
+  -webkit-transform: translateY(85px);
+      -ms-transform: translateY(85px);
+          transform: translateY(85px);
+}
+
+.container {
+  margin-top: 4em auto !important;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 60px 0;
+  height: 100%;
+  text-align: center;
+}
+.container h1 {
+  font-size: 40px;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-timing-function: ease-in-put;
+          transition-timing-function: ease-in-put;
+  font-weight: 200;
+  margin-top: -50px;
+}
+#form {
+  padding: 5px 0;
+  position: relative;
+  z-index: 2;
+}
+#form input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 220px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+}
+#form input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+#form input:focus {
+  background-color: white;
+  width: 260px;
+  color: #296fb7;
+}
+
+#form input:-webkit-autofill {
+    color: #fff !important;
+}
+
+#form input:visited
+{
+    background-color: white;
+}
+
+#form button {
+
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  padding: 10px 15px;
+  color: #296fb7;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+#form button a
+{
+    text-decoration: none;
+}
+#form button:hover {
+  background-color: #e1e4e6;
+}
+
+#txt-cuenta
+{
+    font-family: 'Trade';
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+#btn-registrar
+{
+    text-decoration: none;
+    font-family: 'Trade';
+    text-transform: uppercase;
+    -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+
+  background-color: white;
+  border: 0;
+    padding: 10px 15px;
+    color: #296fb7;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
+#btn-registrar a
+{
+    text-decoration: none;
+}
+#btn-registrar:hover {
+  background-color: #e1e4e6;
+}
+}
+
+
 /************************************* PÁGINA DE INICIO ****************************/
 #title-header img
 {
@@ -91,13 +270,18 @@
     letter-spacing: 2px;
 }
 
+#text-head1
+{
+    letter-spacing: 0px !important;
+}
+
 /************************************* Pagina de Facturación ***********************/
-#facturacion,#inicio
+#facturacion,#inicio,#cobranza
 {
     background: #FFF;
 }
 
-#myselect,#myselect2,#myselect1
+#myselect,#myselect2,#myselect1,#myselect4,#myselect5
 {
     margin-bottom: 10px;
     width: 160px;
@@ -119,6 +303,8 @@
     font-size: 18px;
     margin-left: -10px;
 }
+
+
 
 #ver-grafico
 {
@@ -189,4 +375,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 .google-visualization-table-td google-visualization-table-td-number
 {
     font-size: 20px;
+}
+
+/******************************  Cobranza *******************************/
+#btn-doc,#btn-emp
+{
+    margin-right: 10px;
+    border: none;
+    padding: 10px 15px;
+    font-family: 'Trade';
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: 4px 5px 4px #CCC;
+    cursor: pointer;    
+}
+
+#btn-doc
+{
+    background: #F44336;
+    color: #FFF;
+}
+
+#btn-doc img, #btn-emp img
+{
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+
+#btn-emp
+{
+    background: #607D8B;
+    color: #FFF;
 }
