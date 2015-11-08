@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Cobranza 2.0</title>
+        <title>SIGC</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/temaOficial.min.css"/>
@@ -13,6 +13,11 @@
         <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js" async="async"></script>
         <script type="text/javascript"  src="https://www.google.com/jsapi"></script>
         <script async="async">
+            $(document).bind('mobileinit',function(){
+    $.mobile.changePage.defaults.changeHash = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
+});
             google.load('visualization','1.0',{'packages':['corechart']});
             google.load("visualization", "1.1", {packages:["table"]});
             var datos4 ;
@@ -23,24 +28,28 @@
     <body>
         <div data-role="page" id="inicio">
             <div data-role="header" data-position="fixed">
-                <h3 class="text-head"><img  src="img/icon%20-%20copia.png">Consulta Sedalib S.A.</h3>
+                <h3 class="text-head"><img  src="img/icon%20-%20copia.png">SIGC<br></h3>
             </div>
             <div data-role="content">
+                
                 <center>
-                    <i class="txt-slect">Seleccione un Gráfico</i><select id="myselect1" data-role="none">
+                    <button id="btn-cargar" data-role="none" onclick="verCF()"><img src="img/cargar.png">Calcular Montos</button>
+                    <hr>
+                </center>
+                <center>
+                    <i class="txt-slect" >Seleccione un Gráfico</i><select id="myselect1" data-role="none">
                         <option value="Grafico Columnas">Gráfico Columnas</option>
                         <option value="Grafico Barras">Gráfico Barras</option>
                         <option value="Grafico Combo">Gráfico Combo</option>
                         <option value="Grafico Area">Gráfico Area</option>
                         <option value="Grafico Line">Gráfico Linea</option>
-                    </select>
+                    </select><button  id="btn-grafico" data-role="none" onclick="graficarMontos()" disabled><img src="img/dollar116.png">Gráficar</button>
                  </center>
-                
-                <button onclick="verCF()">Calcular Montos</button><button onclick="graficarMontos()">Ver Gráfico</button>
                 <center><div id="LoadingImage2" style="display: none">
                 <img src="img/ajax-loader.gif" />
             </div></center>
                 <div id="charts1"></div>
+                <div id="table2"></div>
                 <script>
                     function dibujar3(datos4,ancho,grafica)
                     {   
@@ -49,15 +58,28 @@
                         var grafica = grafica;
                         var opciones = {'title':'Facturación y Cobranza',
                                         'width':ancho,
-                                        'height':500,
-                                        colors: ['#78123A','#12321F']};          
+                                        'height':300,
+                                        colors: ['#00BCD4','#4CAF50']};          
                         grafica.draw(datos,opciones);
+                    }
+                    function dibujar4(datos5,ancho)
+                    {
+                        var datos = datos5;
+                        var ancho4 = ancho;
+                        var opciones = {'title':'Facturación por Recibo',
+                                    'width':ancho4,
+                                    'height':300,
+                                    colors: ['#78123A']};          
+                    var grafica =   new  google.visualization.Table(document.getElementById('table2'));
+                    grafica.draw(datos,opciones);
                     }
                 </script>
             <div id="btns">
-            <center>
-            <a class="btn-sub" data-role="none" href="#cobranzaxdoc"><img class="btn-secun" src="img/payment7.png">Cobranza</a>
-            <a class="btn-sub" data-role="none" href="#facturacion"><img class="btn-secun" src="img/document199.png">Facturación</a>
+            <center style="
+    margin-top: 20px;
+">
+            <a class="btn-sub" data-role="none" href="#" onclick="cargarMeses()"><img class="btn-secun" src="img/payment7.png">Cobranza</a>
+            <a class="btn-sub" data-role="none" href="#" onclick="cargarMeses1()"><img class="btn-secun" src="img/document199.png">Facturación</a>
             </center>
             </div>
             </div>
@@ -102,9 +124,9 @@
                     var grafica2 = grafica1;
                     var ancho1 = ancho;
                     var datos1= datos;
-                    var opciones = {'title':'Cantidades por Recibo',
+                    var opciones = {'title':'Cantidades por Documento',
                                     'width':ancho1,
-                                    'height':300};     
+                                    'height':400};     
                     grafica2.draw(datos1,opciones);
                 }
 
@@ -116,7 +138,7 @@
                     {
                         var ancho2 = ancho;
                         var datos2 = datos;
-                        var opciones = {'title':'Facturación por Recibo',
+                        var opciones = {'title':'Facturación por Documento',
                                     'width':ancho2,
                                     'height':300,
                                     colors: ['#78123A']};          
@@ -131,6 +153,25 @@
                 <h3 class="foot">SEDALIB S.A. &copy; 2015</h3>
             </div>
             </div>
+        <div data-role="page" id="cobranza">
+            <div data-role="header" data-position="fixed">
+                <h3 class="text-head"> Facturación</h3>
+                <a href="#inicio" data-role="none"><img src="img/back.png"></a>
+            </div>
+            <div data-role="content">
+                <center>
+                   <i class="txt-slect">Seleccione una Fecha</i><select id="myselect4" data-role="none">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                 </center>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h3 class="foot">SEDALIB S.A. &copy; 2015</h3>
+            </div>
+        </div>
        
     </body>
 </html>

@@ -10,6 +10,69 @@
     vertical-align: bottom;
 }
 
+#btn-cargar
+{
+    background: #8BC34A;
+    color: #FFF;
+    border: none;
+    padding: 5px 15px;
+    font-size: 18px;
+    font-family: 'Trade';
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    box-shadow: 5px 3px 5px #CCC;
+    cursor: pointer;
+}
+
+#btn-cargar img
+{
+    vertical-align: text-bottom;
+    margin-right: 5px;
+}
+
+#btn-grafico
+{
+    margin-left: 20px;
+    border: none;
+    font-size: 16px;
+    padding: 5px 15px;
+    font-family: 'Trade';
+    text-transform: uppercase;
+    box-shadow: 3px 4px 3px #DDD;
+    background: #009688;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.btn-sub
+{
+    text-decoration: none !important;
+    padding: 10px;
+    background: #00695C;
+    /*border-radius: 5px;*/
+    font-family: "Trade";
+    color: #FFF;
+    width: 280px !important;
+    border: none;
+    font-size: 18px !important;
+    text-shadow: none !important;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.btn-secun
+{
+    vertical-align: bottom;
+    margin-right: 8px;
+}
+
+
+#btn-grafico img
+{
+    vertical-align: top;
+    margin-right: 10px;
+}
+
 .foot
 {
     font-family: "Trade";
@@ -21,27 +84,31 @@
 {
     text-shadow: none;
     font-family: 'Trade';
+    font-size: 25px !important;
     text-transform: uppercase;
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+    letter-spacing: 2px;
 }
 
 /************************************* Pagina de Facturación ***********************/
-#facturacion
+#facturacion,#inicio
 {
     background: #FFF;
 }
 
 #myselect,#myselect2,#myselect1
 {
-    margin-bottom: 20px;
-    width: 200px;
-    height: 40px;
+    margin-bottom: 10px;
+    width: 160px;
+    height: 30px;
     border: 1px solid #296fb7;
     font-family: 'Trade';
-    font-size: 20px;
+    font-size: 15px;
     background: #296FB7;
-    opacity: 0.7;
+    opacity: 0.9;
     color: #FFF;
-    text-shadow: none:
+    text-shadow: none
 }
 
 .txt-slect
@@ -50,6 +117,7 @@
     font-style: normal;
     font-family: 'Trade';
     font-size: 18px;
+    margin-left: -10px;
 }
 
 #ver-grafico

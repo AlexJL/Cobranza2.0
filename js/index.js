@@ -85,6 +85,7 @@ function onSuccess1(data)
             }
         
         alert("Graficos cargados Correctamente");
+        document.getElementById('btn-grafico').disabled = false;
         verificar = 1;
     }
     
@@ -120,10 +121,10 @@ function graficarMontos()
             }
         
         var datos3 = new google.visualization.DataTable();
-                datos3.addColumn('string','Month');
+                datos3.addColumn('string','Mes');
                 datos3.addColumn('number','Facturacion');
                 datos3.addColumn('number','Cobranza')
-                for(var j=1;j<tam1+1;j++)
+                for(var j=tam1;j>0;j--)
                     {
                         datos3.addRows([
                             [datos4[0][j],datos4[1][j],datos4[2][j]]
@@ -131,6 +132,7 @@ function graficarMontos()
                     }
                 
         dibujar3(datos3,ancho,grafica);
+        dibujar4(datos3,ancho);
             }
     else
         {
@@ -138,3 +140,290 @@ function graficarMontos()
         }
         
 }
+
+function cargarMeses1()
+{
+    if(verificar == 1)
+        {
+    for(var i = 1; i<tam1+1;i++)
+        {
+            var cad1 = "";
+            var cad2 = "";
+            var ayuda = datos4[0][i];
+            var k = 0;
+            for(var j = 0; j<ayuda.length;j++)
+                {
+                    if(ayuda.charAt(j) != '/' && k==0)
+                        {
+                            cad1 = cad1 + ayuda.charAt(j);
+                        }
+                    else if(ayuda.charAt(j)  != '/' && k == 1)
+                        {
+                            cad2 = cad2 + ayuda.charAt(j);
+                        }
+                    else if(ayuda.charAt(j) == '/'){
+                        k++;
+                    }
+                }
+            colocar(i-1,cad1,cad2);
+        }
+            $.mobile.changePage( "index.html#facturacion", { transition: "slideup", changeHash: true });
+            
+            }
+    else
+        {
+            alert("Debe Cargar Datos Primero");
+        }
+}
+
+function colocar(valor, cad, cad1)
+{
+    var cadena = "";
+    if(cad == '01')
+        {
+            cadena = "ENERO - ";
+        }
+    else if(cad == '02')
+        {
+            cadena = "FEBRERO - ";
+        }
+    
+    else if(cad == '03')
+        {
+            cadena = "MARZO - ";
+        }
+    else if(cad == '04')
+        {
+            cadena = "ABRIL - ";
+        }
+    else if(cad == '05')
+        {
+            cadena = "MAYO - ";
+        }
+    else if(cad == '06')
+        {
+            cadena = "JUNIO - ";
+        }
+    else if(cad == '07')
+        {
+            cadena = "JULIO - ";
+        }
+    else if(cad == '08')
+        {
+            cadena = "AGOSTO - ";
+        }
+    else if(cad == '09')
+        {
+            cadena = "SETIEMBRE - ";
+        }
+    else if(cad == '10')
+        {
+            cadena = "OCTUBRE - ";
+        }
+    else if(cad == '11')
+        {
+            cadena = "NOVIEMBRE - ";
+        }
+    else if(cad == '12')
+        {
+            cadena = "DICIEMBRE - ";
+        }
+    
+    cad1 = "20"+cad1;
+    cadena = cadena + cad1;
+    alert(cadena);
+    var variable2 = new Option(cadena,"value","defaultSelected","selected");
+    document.getElementById("myselect").options[valor] = variable2;
+}
+
+function cargarMeses1()
+{
+    if(verificar == 1)
+        {
+    for(var i = 1; i<tam1+1;i++)
+        {
+            var cad1 = "";
+            var cad2 = "";
+            var ayuda = datos4[0][i];
+            var k = 0;
+            for(var j = 0; j<ayuda.length;j++)
+                {
+                    if(ayuda.charAt(j) != '/' && k==0)
+                        {
+                            cad1 = cad1 + ayuda.charAt(j);
+                        }
+                    else if(ayuda.charAt(j)  != '/' && k == 1)
+                        {
+                            cad2 = cad2 + ayuda.charAt(j);
+                        }
+                    else if(ayuda.charAt(j) == '/'){
+                        k++;
+                    }
+                }
+            colocar(i-1,cad1,cad2);
+        }
+            $.mobile.changePage( "index.html#facturacion", { transition: "slideup", changeHash: true });
+            
+            }
+    else
+        {
+            alert("Debe Cargar Datos Primero");
+        }
+}
+
+function colocar(valor, cad, cad1)
+{
+    var cadena = "";
+    if(cad == '01')
+        {
+            cadena = "ENERO - ";
+        }
+    else if(cad == '02')
+        {
+            cadena = "FEBRERO - ";
+        }
+    
+    else if(cad == '03')
+        {
+            cadena = "MARZO - ";
+        }
+    else if(cad == '04')
+        {
+            cadena = "ABRIL - ";
+        }
+    else if(cad == '05')
+        {
+            cadena = "MAYO - ";
+        }
+    else if(cad == '06')
+        {
+            cadena = "JUNIO - ";
+        }
+    else if(cad == '07')
+        {
+            cadena = "JULIO - ";
+        }
+    else if(cad == '08')
+        {
+            cadena = "AGOSTO - ";
+        }
+    else if(cad == '09')
+        {
+            cadena = "SETIEMBRE - ";
+        }
+    else if(cad == '10')
+        {
+            cadena = "OCTUBRE - ";
+        }
+    else if(cad == '11')
+        {
+            cadena = "NOVIEMBRE - ";
+        }
+    else if(cad == '12')
+        {
+            cadena = "DICIEMBRE - ";
+        }
+    
+    cad1 = "20"+cad1;
+    cadena = cadena + cad1;
+    alert(cadena);
+    var variable2 = new Option(cadena,"value","defaultSelected","selected");
+    document.getElementById("myselect").options[valor] = variable2;
+}
+
+function cargarMeses()
+{
+    if(verificar == 1)
+        {
+    for(var i = 1; i<tam1+1;i++)
+        {
+            var cad1 = "";
+            var cad2 = "";
+            var ayuda = datos4[0][i];
+            var k = 0;
+            for(var j = 0; j<ayuda.length;j++)
+                {
+                    if(ayuda.charAt(j) != '/' && k==0)
+                        {
+                            cad1 = cad1 + ayuda.charAt(j);
+                        }
+                    else if(ayuda.charAt(j)  != '/' && k == 1)
+                        {
+                            cad2 = cad2 + ayuda.charAt(j);
+                        }
+                    else if(ayuda.charAt(j) == '/'){
+                        k++;
+                    }
+                }
+            colocar1(i-1,cad1,cad2);
+        }
+            $.mobile.changePage( "index.html#cobranza", { transition: "slideup", changeHash: true });
+            
+            }
+    else
+        {
+            alert("Debe Cargar Datos Primero");
+        }
+}
+
+function colocar1(valor, cad, cad1)
+{
+    var cadena = "";
+    if(cad == '01')
+        {
+            cadena = "ENERO - ";
+        }
+    else if(cad == '02')
+        {
+            cadena = "FEBRERO - ";
+        }
+    
+    else if(cad == '03')
+        {
+            cadena = "MARZO - ";
+        }
+    else if(cad == '04')
+        {
+            cadena = "ABRIL - ";
+        }
+    else if(cad == '05')
+        {
+            cadena = "MAYO - ";
+        }
+    else if(cad == '06')
+        {
+            cadena = "JUNIO - ";
+        }
+    else if(cad == '07')
+        {
+            cadena = "JULIO - ";
+        }
+    else if(cad == '08')
+        {
+            cadena = "AGOSTO - ";
+        }
+    else if(cad == '09')
+        {
+            cadena = "SETIEMBRE - ";
+        }
+    else if(cad == '10')
+        {
+            cadena = "OCTUBRE - ";
+        }
+    else if(cad == '11')
+        {
+            cadena = "NOVIEMBRE - ";
+        }
+    else if(cad == '12')
+        {
+            cadena = "DICIEMBRE - ";
+        }
+    
+    cad1 = "20"+cad1;
+    cadena = cadena + cad1;
+    alert(cadena);
+    var variable2 = new Option(cadena,"value","defaultSelected","selected");
+    document.getElementById("myselect4").options[valor] = variable2;
+}
+
+
