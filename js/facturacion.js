@@ -132,6 +132,28 @@ function onSuccess(data)
                 datos[2][i] = parseFloat(montos[i-1]);
             }
         
+        for(var i = 1;i<tam+1;i++)
+                {
+                    for(var j = i+1; j<tam+1;j++)
+                        {
+                            if(datos[2][i]<datos[2][j])
+                                {
+                                    var ayuda= datos[2][i];
+                                    datos[2][i] = datos[2][j];
+                                    datos[2][j] = ayuda;
+                                    
+                                    var ayuda1 = datos[0][i];
+                                    datos[0][i] = datos[0][j];
+                                    datos[0][j] = ayuda1;
+                                    
+                                    var ayuda2 = datos[1][i];
+                                    datos[1][i] = datos[1][j];
+                                    datos[1][j] = ayuda2;
+                                    
+                                }
+                        }
+                }
+        
         var datos1 = new google.visualization.DataTable();
                 datos1.addColumn('string','Documentos');
                 datos1.addColumn('number','Montos');
@@ -142,9 +164,14 @@ function onSuccess(data)
                          ]);
                     }
                 
+        for(var i=1;i<tam+1;i++)
+            {
+                datos[2][i] = obtenerValor(String(datos[2][i]));
+            }
+        
         var datos2 = new google.visualization.DataTable();
                 datos2.addColumn('string','Documentos');
-                datos2.addColumn('number','Montos');
+                datos2.addColumn('string','Montos');
                 for(var z = 1;z<tam+1;z++)
                     {
                         datos2.addRows([

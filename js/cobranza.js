@@ -115,12 +115,36 @@ function onSuccess2(data)
             datos5[0][1] = "Monto";
             datos5[0][2] = "Cantidad";
             
+            
+            
             for(var i = 1; i<tam2+1; i++)
             {
                 datos5[0][i] = nombres1[i-1];
                 datos5[2][i] = cantidades1[i-1];
                 datos5[1][i] = parseFloat(montos1[i-1]);
             }
+            
+            for(var i = 1;i<tam2+1;i++)
+                {
+                    for(var j = i+1; j<tam2+1;j++)
+                        {
+                            if(datos5[1][i]<datos5[1][j])
+                                {
+                                    var ayuda= datos5[1][i];
+                                    datos5[1][i] = datos5[1][j];
+                                    datos5[1][j] = ayuda;
+                                    
+                                    var ayuda1 = datos5[0][i];
+                                    datos5[0][i] = datos5[0][j];
+                                    datos5[0][j] = ayuda1;
+                                    
+                                    var ayuda2 = datos5[2][i];
+                                    datos5[2][i] = datos5[2][j];
+                                    datos5[2][j] = ayuda2;
+                                }
+                        }
+                }
+            
             
             
             var datos6 = new google.visualization.DataTable();
@@ -133,9 +157,14 @@ function onSuccess2(data)
                          ]);
                     }
                 
+            for(var i=1;i<tam2+1;i++)
+                {
+                    datos5[1][i] = obtenerValor(String(datos5[1][i]));
+                }
+            
             var datos7 = new google.visualization.DataTable();
                 datos7.addColumn('string','Documentos');
-                datos7.addColumn('number','Montos');
+                datos7.addColumn('string','Montos');
                 for(var z = 1;z<tam2+1;z++)
                     {
                         datos7.addRows([
@@ -147,11 +176,11 @@ function onSuccess2(data)
                 var grafica3;
                 if(x4 == 0)
                 {
-                    grafica3 =  new  google.visualization.BarChart(document.getElementById('charts2'));
+                    grafica3 =  new  google.visualization.ColumnChart(document.getElementById('charts2'));
                 }
                 else if(x4 == 1)
                 {
-                     grafica3 =  new  google.visualization.ColumnChart(document.getElementById('charts2'));       
+                     grafica3 =  new  google.visualization.BarChart(document.getElementById('charts2'));       
                 }
                 else if(x4 == 2)
                 {
@@ -162,7 +191,7 @@ function onSuccess2(data)
                      grafica3 =  new  google.visualization.LineChart(document.getElementById('charts2'));         
                 } 
                 else{
-                    grafica3 =  new  google.visualization.BarChart(document.getElementById('charts2'));   
+                    grafica3 =  new  google.visualization.ColumnChart(document.getElementById('charts2'));   
                 }
             
             dibujar3(datos6,ancho,grafica3);
@@ -276,6 +305,25 @@ function onSuccess3(data)
                 datos8[1][i] = parseFloat(cantidades2[i-1]);
             }
         
+        for(var i = 1;i<tam3+1;i++)
+                {
+                    for(var j = i+1; j<tam3+1;j++)
+                        {
+                            if(datos8[1][i]<datos8[1][j])
+                                {
+                                    var ayuda= datos8[1][i];
+                                    datos8[1][i] = datos8[1][j];
+                                    datos8[1][j] = ayuda;
+                                    
+                                    var ayuda1 = datos8[0][i];
+                                    datos8[0][i] = datos8[0][j];
+                                    datos8[0][j] = ayuda1;
+                                    
+                                }
+                        }
+                }
+        
+        
         var datos9 = new google.visualization.DataTable();
                 datos9.addColumn('string','Empresa');
                 datos9.addColumn('number','Montos');
@@ -286,9 +334,15 @@ function onSuccess3(data)
                          ]);
                     }
                 
+        for(var i = 0;i<tam3+1;i++)
+            {
+                datos8[1][i] = obtenerValor(String(datos8[1][i]));
+            }
+        
+        
             var datos10 = new google.visualization.DataTable();
                 datos10.addColumn('string','Empresa');
-                datos10.addColumn('number','Montos');
+                datos10.addColumn('string','Montos');
                 for(var z = 1;z<tam3+1;z++)
                     {
                         datos10.addRows([
@@ -299,11 +353,11 @@ function onSuccess3(data)
                 var grafica3;
                 if(x4 == 0)
                 {
-                    grafica3 =  new  google.visualization.BarChart(document.getElementById('charts2'));
+                    grafica3 =  new  google.visualization.ColumnChart(document.getElementById('charts2'));
                 }
                 else if(x4 == 1)
                 {
-                     grafica3 =  new  google.visualization.ColumnChart(document.getElementById('charts2'));       
+                     grafica3 =  new  google.visualization.BarChart(document.getElementById('charts2'));       
                 }
                 else if(x4 == 2)
                 {
@@ -314,7 +368,7 @@ function onSuccess3(data)
                      grafica3 =  new  google.visualization.LineChart(document.getElementById('charts2'));         
                 } 
                 else{
-                    grafica3 =  new  google.visualization.BarChart(document.getElementById('charts2'));   
+                    grafica3 =  new  google.visualization.ColumnChart(document.getElementById('charts2'));   
                 }
         
         dibujar3(datos9,ancho,grafica3);
@@ -345,4 +399,56 @@ function dibujar6(valor,x)
                     colors: ['#78123A']};          
     var grafica =   new  google.visualization.Table(document.getElementById('table3'));
     grafica.draw(datos2,opciones);
+}
+
+
+function obtenerValor(valor)
+{
+    var cadenaRegreso = "";
+    var p = 0;
+    var valor1 = valor.indexOf('.');
+    if(valor1 > 0)
+        {
+            var j = 0;
+            for(var i=valor1-1;i>=0;i--)
+            {
+
+                if(j%3==0 && j>0 && p == 0)
+                    {
+                        cadenaRegreso = "," + cadenaRegreso;
+                        p = 1;
+                    }
+                else if(j%3==0 && j>0 && p == 1)
+                    {
+                        cadenaRegreso = "'" + cadenaRegreso;
+                    }
+                 cadenaRegreso = valor.charAt(i) + cadenaRegreso;       
+                j++;
+            }
+            cadenaRegreso = cadenaRegreso + valor.charAt(j) + valor.charAt(j+1) + valor.charAt(j+2);
+        }
+    else if(valor = "0")
+        {
+            cadenaRegreso = "0.00";
+        }
+    else
+        {
+            var j = 0;
+            for(var i=valor.length-1;i>=0;i--)
+            {
+
+                if(j%3==0 && j>0)
+                    {
+                        cadenaRegreso = "'" + cadenaRegreso;
+                    }
+                else if(j%3==0 && j>0 && p == 1)
+                    {
+                        cadenaRegreso = "'" + cadenaRegreso;
+                    }
+                 cadenaRegreso = valor.charAt(i) + cadenaRegreso;       
+                j++;
+            }
+            cadenaRegreso = cadenaRegreso + valor.charAt(j) + valor.charAt(j+1) + valor.charAt(j+2);
+        }
+    return cadenaRegreso;
 }

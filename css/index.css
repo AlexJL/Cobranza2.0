@@ -356,14 +356,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     font-family: 'Trade';
     font-size: 16px;
     text-shadow: none;
-    text-align: center;
+    text-align: left;
 }
 
 .google-visualization-table-tr-odd
 {
     background: #FFF !important;
     text-shadow: none;
-    text-align: center;
+    text-align: left;
     font-size: 16px;
     font-family: 'Trade';
 }
