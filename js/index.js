@@ -567,13 +567,14 @@ function onSuccess6(data)
             document.getElementById('txt-pass').value = "";
         }
     else{
-        verCF();
+        
         alert("BIENVENIDO " + data);
             $.mobile.changePage( "index.html#inicio", {
             transition: "slide",
             reverse: false,
             changeHash: true
             });
+        verCF();
         
         
 

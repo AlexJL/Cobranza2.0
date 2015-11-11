@@ -202,7 +202,7 @@ function onSuccess(data)
                      grafica1 =  new  google.visualization.LineChart(document.getElementById('charts'));         
                 }
                 else{
-                    grafica1 =  new  google.visualization.ColumnChart(document.getElementById('charts'));   
+                    grafica1 =  new  google.visualization.columnChart(document.getElementById('charts'));   
                 }
                     
         
