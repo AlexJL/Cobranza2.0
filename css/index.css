@@ -217,7 +217,7 @@
     margin-right: 10px;
 }
 
-#btn-sub1:hover,#btn-sub2:hover
+.btn-sub:hover
 {
     background: #4caf50;
 }

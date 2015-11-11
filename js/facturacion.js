@@ -183,7 +183,7 @@ function onSuccess(data)
                 var grafica1;
                 if(x3 == 0)
                 {
-                    grafica1 =  new  google.visualization.BarChart(document.getElementById('charts'));
+                    grafica1 =  new  google.visualization.ColumnChart(document.getElementById('charts'));
                 }
                 else if(x3 == 1)
                 {
@@ -191,7 +191,7 @@ function onSuccess(data)
                 }
                 else if(x3 == 2)
                 {
-                    grafica1 =  new  google.visualization.ColumnChart(document.getElementById('charts'));       
+                    grafica1 =  new  google.visualization.BarChart(document.getElementById('charts'));       
                 }
                 else if(x3 == 3)
                 {
