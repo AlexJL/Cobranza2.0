@@ -24,18 +24,19 @@
     <body>
         
         <div data-role="page" id="login">
-        <div class="wrapper">
-            <div class="container">
+         <div class="wrapper">
+    <div class="container">
             <h1><img src="img/logo.png" alt="Log Sedalib" width="250" height="70"></h1>
+
             <div id="form" >
-                 <input id="txt-email" data-role="none" name="username" type="text" tabindex="1" placeholder="Usuario" required>
+                 <input id="txt-email" data-role="none" name="username" type="text" tabindex="1" placeholder="E-mail" required>
                  <input id="txt-pass" data-role="none" name="userpass" type="password" tabindex="2" placeholder="Contraseña" required>
                  <button data-role="none"  id="login-button" value="Login" onclick="ingresoUsuarioValido()" ><a id="login-entrar">Login</a></button>
             </div>
-            
-            </div>
-        </div>
-        </div>
+    </div>
+
+</div>
+     </div>
         
         <div data-role="page" id="inicio">
             <div data-role="header" data-position="fixed">
@@ -44,8 +45,8 @@
             <div data-role="content">
                 
                 <center>
-                    <button id="btn-cargar" data-role="none" onclick="verCF()"><img src="img/cargar.png">Actualizar Montos</button>
-                    <hr>
+                  <!--  <button id="btn-cargar" data-role="none" onclick="verCF()"><img src="img/cargar.png">Actualizar Montos</button>
+                    <hr>-->
                 </center>
                 <center>
                     <i class="txt-slect" >Seleccione un Gráfico</i><select id="myselect1" data-role="none">
@@ -54,8 +55,10 @@
                         <option value="Grafico Combo">Gráfico Combo</option>
                         <option value="Grafico Area">Gráfico Area</option>
                         <option value="Grafico Line">Gráfico Linea</option>
-                    </select><button  id="btn-grafico" data-role="none" onclick="graficarMontos()" disabled><img src="img/dollar116.png">Gráficar</button>
+                    </select><button  id="btn-grafico" data-role="none" onclick="graficarMontos()"><img src="img/dollar116.png">Gráficar</button>
                  </center>
+                <hr id="hr-inicio">
+                
                 <center><div id="LoadingImage2" style="display: none">
                 <img src="img/ajax-loader.gif" />
             </div></center>
@@ -89,8 +92,8 @@
             <center style="
     margin-top: 20px;
 ">
-            <a class="btn-sub" data-role="none" href="#" onclick="cargarMeses()"><img class="btn-secun" src="img/payment7.png">Cobranza</a>
-            <a class="btn-sub" data-role="none" href="#" onclick="cargarMeses1()"><img class="btn-secun" src="img/document199.png">Facturación</a>
+            <a class="btn-sub" id="btn-sub1" data-role="none" href="#" onclick="cargarMeses()"><img class="btn-secun" src="img/payment7.png">Cobranza</a>
+            <a class="btn-sub" id="btn-sub2" data-role="none" href="#" onclick="cargarMeses1()"><img class="btn-secun" src="img/document199.png">Facturación</a>
             </center>
             </div>
             </div>

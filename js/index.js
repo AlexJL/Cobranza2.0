@@ -85,8 +85,8 @@ function onSuccess1(data)
             }
         
         alert("Graficos cargados Correctamente");
-        document.getElementById('btn-grafico').disabled = false;
         verificar = 1;
+        graficarMontos();
     }
     
 }
@@ -119,7 +119,15 @@ function graficarMontos()
                 var container = document.getElementById('charts1')
                 grafica =   new  google.visualization.LineChart(container);
             }
-        
+        var datos16 = new Array(new Array(tam1),new Array(tam1),new Array(tam1),new Array(tam1));
+             for(var i = 0;i <tam1;i++)
+            {
+                datos16[2][i] = cargarMeses2(datos4[0][i+1]);
+                datos16[0][i] = obtenerValor(String(datos4[1][i+1]));
+                datos16[1][i] = obtenerValor(String(datos4[2][i+1]));
+                datos16[3][i] = obtenerValor(String(datos4[1][i+1] - datos4[2][i+1])); 
+            }
+            
         var datos3 = new google.visualization.DataTable();
                 datos3.addColumn('string','Mes');
                 datos3.addColumn('number','Facturacion');
@@ -127,19 +135,26 @@ function graficarMontos()
                 for(var j=tam1;j>0;j--)
                     {
                         datos3.addRows([
-                            [datos4[0][j],datos4[1][j],datos4[2][j]]
+                            [datos16[2][j-1],datos4[1][j],datos4[2][j]]
                             ]);
                     }
-                
+            
+        
+            
+       
+            
+       // alert(datos16[2][0]);
+            
         dibujar3(datos3,ancho,grafica);
             var datos13 = new google.visualization.DataTable();
                 datos13.addColumn('string','Mes');
-                datos13.addColumn('number','Facturacion');
-                datos13.addColumn('number','Cobranza')
+                datos13.addColumn('string','Facturacion');
+                datos13.addColumn('string','Cobranza')
+                datos13.addColumn('string','Saldo')
                 for(var j=1;j<tam1+1;j++)
                     {
                         datos13.addRows([
-                            [datos4[0][j],datos4[1][j],datos4[2][j]]
+                            [datos16[2][j-1],datos16[0][j-1],datos16[1][j-1],datos16[3][j-1]]
                             ]);
                     }
         dibujar4(datos13,ancho);
@@ -150,6 +165,9 @@ function graficarMontos()
         }
         
 }
+
+
+
 
 function cargarMeses1()
 {
@@ -245,6 +263,91 @@ function colocar(valor, cad, cad1)
     var variable2 = new Option(cadena,"value","defaultSelected","selected");
     document.getElementById("myselect").options[valor] = variable2;
 }
+
+
+function cargarMeses2(valor)
+{
+    
+    var respuesta = "";
+    var cad1 = "";
+    var cad2 = "";
+    var k = 0;
+    for(var i = 0; i<valor.length;i++)
+        {
+            if(valor.charAt(i) != '/' && k==0)
+            {
+                cad1 = cad1 + valor.charAt(i);
+            }
+            else if(valor.charAt(i)  != '/' && k == 1)
+            {
+                cad2 = cad2 + valor.charAt(i);
+            }
+            else if(valor.charAt(i) == '/'){
+                 k++;
+            }
+        }
+    respuesta = colocar2(cad1,cad2);
+    return respuesta;
+}
+
+
+function colocar2(cad, cad1)
+{
+    var cadena = "";
+    if(cad == '01')
+        {
+            cadena = "ENE - ";
+        }
+    else if(cad == '02')
+        {
+            cadena = "FEB - ";
+        }
+    
+    else if(cad == '03')
+        {
+            cadena = "MAR - ";
+        }
+    else if(cad == '04')
+        {
+            cadena = "ABR - ";
+        }
+    else if(cad == '05')
+        {
+            cadena = "MAY - ";
+        }
+    else if(cad == '06')
+        {
+            cadena = "JUN - ";
+        }
+    else if(cad == '07')
+        {
+            cadena = "JUL - ";
+        }
+    else if(cad == '08')
+        {
+            cadena = "AGO - ";
+        }
+    else if(cad == '09')
+        {
+            cadena = "SET - ";
+        }
+    else if(cad == '10')
+        {
+            cadena = "OCT - ";
+        }
+    else if(cad == '11')
+        {
+            cadena = "NOV - ";
+        }
+    else if(cad == '12')
+        {
+            cadena = "DIC - ";
+        }
+    cad1 = "20"+cad1;
+    cadena = cadena + cad1;
+    return cadena;
+}
+
 
 function cargarMeses1()
 {
@@ -437,25 +540,43 @@ function colocar1(valor, cad, cad1)
 function ingresoUsuarioValido()
 {
     var name=document.getElementById('txt-email').value;
+    name = name.toUpperCase();
     var pass = document.getElementById('txt-pass').value;
-    if(name != "ADMIN")
+    $.ajax({
+            type: "POST",
+            url: "http://land.sedalib.com.pe/moviles/cobranza/login.php",
+            data: ({nom:name,psw:pass}),
+            cache: false,
+            dataType: "text",
+            success: onSuccess6
+            });
+    
+}
+
+function onSuccess6(data)
+{
+    if(data == "")
         {
-            alert("usuario incorrecto");
+            alert("Usuario y contraseña no valido");
+            $.mobile.changePage( "index.html", {
+            transition: "slide",
+            reverse: false,
+            changeHash: true
+            });
+            document.getElementById('txt-email').value = "";
+            document.getElementById('txt-pass').value = "";
         }
-    else
-        {
-            if(pass != "ADMIN")
-                {
-                    alert("contraseña no valida")
-                }
-            else
-            {
-                $.mobile.changePage( "index.html#inicio", {
-                transition: "pop",
-                reverse: false,
-                changeHash: true
-                });
-            }
-        }
+    else{
+        verCF();
+        alert("BIENVENIDO " + data);
+            $.mobile.changePage( "index.html#inicio", {
+            transition: "slide",
+            reverse: false,
+            changeHash: true
+            });
+        
+        
+
+    }
     
 }

@@ -27,13 +27,14 @@ function verDocumento()
         {
             var dia1 = verificarDia(4);
             mesinicio1 = "01/"+datos4[0][4];
-            mesfinal1 = dia1+"/"+datos4[0][3];
+            mesfinal1 = dia1+"/"+datos4[0][4];
         }
     else{
         var dia = f.getDate();
         mesinicio1 = "01"+"/"+datos4[0][1];
         mesfinal1 = dia+"/"+datos4[0][1];
     }
+    
     
      $("#LoadingImage3").show();
     $.ajax({
@@ -229,7 +230,7 @@ function verEmpresa()
         {
             var dia1 = verificarDia(4);
             mesinicio = "01/"+datos4[0][4];
-            mesfinal = dia1+"/"+datos4[0][3];
+            mesfinal = dia1+"/"+datos4[0][4];
         }
     else{
         var dia = f.getDate();
