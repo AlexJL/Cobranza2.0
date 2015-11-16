@@ -9,6 +9,7 @@
   background: #296fb7;
   color: white;
   font-weight: 300;
+  overflow: scroll;
 }
 
 #login ::-webkit-input-placeholder {
@@ -262,6 +263,7 @@
 #facturacion,#inicio,#cobranza
 {
     background: #FFF;
+    overflow: scroll;
 }
 
 #myselect,#myselect2,#myselect1,#myselect4,#myselect5
