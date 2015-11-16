@@ -166,7 +166,7 @@ function onSuccess(data)
                 
         for(var i=1;i<tam+1;i++)
             {
-                datos[2][i] = obtenerValor(String(datos[2][i]));
+                datos[2][i] = obtenerValor1(String(datos[2][i]));
             }
         
         var datos2 = new google.visualization.DataTable();

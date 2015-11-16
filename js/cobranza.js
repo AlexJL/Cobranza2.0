@@ -30,9 +30,9 @@ function verDocumento()
             mesfinal1 = dia1+"/"+datos4[0][4];
         }
     else{
-        var dia = f.getDate();
+        var dia2 = f.getDate();
         mesinicio1 = "01"+"/"+datos4[0][1];
-        mesfinal1 = dia+"/"+datos4[0][1];
+        mesfinal1 = dia2+"/"+datos4[0][1];
     }
     
     
@@ -160,7 +160,7 @@ function onSuccess2(data)
                 
             for(var i=1;i<tam2+1;i++)
                 {
-                    datos5[1][i] = obtenerValor(String(datos5[1][i]));
+                    datos5[1][i] = obtenerValor1(String(datos5[1][i]));
                 }
             
             var datos7 = new google.visualization.DataTable();
@@ -335,9 +335,9 @@ function onSuccess3(data)
                          ]);
                     }
                 
-        for(var i = 0;i<tam3+1;i++)
+        for(var i = 1;i<tam3+1;i++)
             {
-                datos8[1][i] = obtenerValor(String(datos8[1][i]));
+                datos8[1][i] = obtenerValor1(String(datos8[1][i]));
             }
         
         
@@ -396,8 +396,7 @@ function dibujar6(valor,x)
     var datos2 = valor;
     var opciones = {'title':'cobranza por Documento',
                     'width':ancho2,
-                    'height':300,
-                    colors: ['#78123A']};          
+                    'height':300};          
     var grafica =   new  google.visualization.Table(document.getElementById('table3'));
     grafica.draw(datos2,opciones);
 }
@@ -405,6 +404,7 @@ function dibujar6(valor,x)
 
 function obtenerValor(valor)
 {
+
     var cadenaRegreso = "";
     var p = 0;
     var valor1 = valor.indexOf('.');
@@ -435,14 +435,16 @@ function obtenerValor(valor)
     else
         {
             var j = 0;
+            var k = 0;
             for(var i=valor.length-1;i>=0;i--)
             {
 
-                if(j%3==0 && j>0)
+                if(j%3==0 && j>0 && k ==0)
                     {
-                        cadenaRegreso = "'" + cadenaRegreso;
+                        cadenaRegreso = "," + cadenaRegreso;
+                        k == 1;
                     }
-                else if(j%3==0 && j>0 && p == 1)
+                else if(j%3==0 && j>0 && k == 1)
                     {
                         cadenaRegreso = "'" + cadenaRegreso;
                     }
@@ -452,4 +454,53 @@ function obtenerValor(valor)
             cadenaRegreso = cadenaRegreso + valor.charAt(j) + valor.charAt(j+1) + valor.charAt(j+2);
         }
     return cadenaRegreso;
+}
+
+function obtenerValor1(valor)
+{
+    var cadena = "";
+    if(valor == "0")
+        {
+            cadena = "0.00"
+        }
+    else if(valor.indexOf('.') == -1)
+        {
+            var p = 0;
+            var tam7 = valor.length;
+            for(var i = tam7-1;i>=0;i--)
+                {
+                    if(p == 3)
+                        {
+                            cadena = "," + cadena;
+                        }
+                    else if(p == 6){
+                        cadena = "'"+cadena;
+                    }
+                    cadena = valor.charAt(i) + cadena;
+                    p++;
+                }
+        }
+    else if(valor.indexOf('.') != -1)
+        {
+            var p = 0;
+            var x = valor.indexOf('.');
+            for(var i=x-1;i>=0;i--)
+                {
+                    if(p == 3)
+                        {
+                            cadena = "," + cadena;
+                        }
+                    else if(p == 6){
+                        cadena = "'"+cadena;
+                    }
+                    cadena = valor.charAt(i) + cadena;
+                    p++;
+                }
+            for(var i=x;i<valor.length;i++)
+                {
+                    cadena = cadena + valor.charAt(i);
+                }
+            
+        }
+    return cadena;
 }

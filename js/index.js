@@ -123,9 +123,9 @@ function graficarMontos()
              for(var i = 0;i <tam1;i++)
             {
                 datos16[2][i] = cargarMeses2(datos4[0][i+1]);
-                datos16[0][i] = obtenerValor(String(datos4[1][i+1]));
-                datos16[1][i] = obtenerValor(String(datos4[2][i+1]));
-                datos16[3][i] = obtenerValor(String(datos4[1][i+1] - datos4[2][i+1])); 
+                datos16[0][i] = obtenerValor1(String(datos4[1][i+1]));
+                datos16[1][i] = obtenerValor1(String(datos4[2][i+1]));
+                datos16[3][i] = obtenerValor1(String(Math.round(((datos4[1][i+1] - datos4[2][i+1])*100)/100))); 
             }
             
         var datos3 = new google.visualization.DataTable();

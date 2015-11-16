@@ -364,7 +364,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 .google-visualization-table-td google-visualization-table-td-number
 {
     font-size: 20px;
+    text-align: right;
 }
+
+.google-visualization-table-table tr td:nth-child(2) {
+    text-align: right;
+}
+
+.google-visualization-table-table tr td:nth-child(3) {
+    text-align: right;
+}
+ .google-visualization-table-table tr td:nth-child(4) {
+    text-align: right;
+}
+
 
 /******************************  Cobranza *******************************/
 #btn-doc,#btn-emp
