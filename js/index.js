@@ -139,10 +139,6 @@ function graficarMontos()
                             ]);
                     }
             
-        
-            
-       
-            
        // alert(datos16[2][0]);
             
         dibujar3(datos3,ancho,grafica);

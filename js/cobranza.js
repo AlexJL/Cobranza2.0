@@ -402,59 +402,7 @@ function dibujar6(valor,x)
 }
 
 
-function obtenerValor(valor)
-{
 
-    var cadenaRegreso = "";
-    var p = 0;
-    var valor1 = valor.indexOf('.');
-    if(valor1 > 0)
-        {
-            var j = 0;
-            for(var i=valor1-1;i>=0;i--)
-            {
-
-                if(j%3==0 && j>0 && p == 0)
-                    {
-                        cadenaRegreso = "," + cadenaRegreso;
-                        p = 1;
-                    }
-                else if(j%3==0 && j>0 && p == 1)
-                    {
-                        cadenaRegreso = "'" + cadenaRegreso;
-                    }
-                 cadenaRegreso = valor.charAt(i) + cadenaRegreso;       
-                j++;
-            }
-            cadenaRegreso = cadenaRegreso + valor.charAt(j) + valor.charAt(j+1) + valor.charAt(j+2);
-        }
-    else if(valor = "0")
-        {
-            cadenaRegreso = "0.00";
-        }
-    else
-        {
-            var j = 0;
-            var k = 0;
-            for(var i=valor.length-1;i>=0;i--)
-            {
-
-                if(j%3==0 && j>0 && k ==0)
-                    {
-                        cadenaRegreso = "," + cadenaRegreso;
-                        k == 1;
-                    }
-                else if(j%3==0 && j>0 && k == 1)
-                    {
-                        cadenaRegreso = "'" + cadenaRegreso;
-                    }
-                 cadenaRegreso = valor.charAt(i) + cadenaRegreso;       
-                j++;
-            }
-            cadenaRegreso = cadenaRegreso + valor.charAt(j) + valor.charAt(j+1) + valor.charAt(j+2);
-        }
-    return cadenaRegreso;
-}
 
 function obtenerValor1(valor)
 {
@@ -479,6 +427,7 @@ function obtenerValor1(valor)
                     cadena = valor.charAt(i) + cadena;
                     p++;
                 }
+            cadena = cadena + ".00";
         }
     else if(valor.indexOf('.') != -1)
         {
